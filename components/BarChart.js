@@ -97,7 +97,7 @@ const BarChart = () => {
 
     return (
         <>
-            <div className='w-full relative lg:h-[40vh] h-[50vh] m-auto p-4 rounded-lg bg-white'>
+            <div className='w-full relative lg:h-[40vh] sm:h-[60vh] md:h-[50vh]  m-auto md:p-4 sm:pt-4 rounded-lg bg-white'>
                 <Bar data={chartData} options={chartOptions} />
             </div>
         </>

@@ -27,7 +27,7 @@ const RetirementIncome = () => {
     }, [percentage, percentageOne, percentageTwo]);
 
     return (
-        <div className='sm:col-span-3 lg:col-span-1 bg-white pt-10 flex flex-col sm:px-8 md:px-0 md:min-h-screen md:ml-20 lg:ml-0 lg:min-w-full'
+        <div className='sm:col-span-3 lg:col-span-1 bg-white pt-10 flex flex-col sm:px-2 md:px-0 md:min-h-screen md:ml-20 lg:ml-0 lg:min-w-full'
         >
             <h2 className='text-[#6b5afc] font-bold font-custom1'>Retirement Income</h2>
             <h1 className='text-2xl font-custom1 font-semibold'>Starting Year 2056</h1>
