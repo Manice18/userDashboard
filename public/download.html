@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+
+    <title>Cross Browser Slider</title>
+
+    <meta name="description" content="
+
+        Custom browser range slider.
+    ">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+   
+
+
+
+    <style>
+
+        * {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 400;
+        }
+
+        body { 
+            margin:  0;
+            height:  100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            flex-direction: column;
+            background: #eee;
+            overflow: hidden;
+            line-height: 1.5;
+        }
+
+        h1, p {
+            width: 80%;
+            max-width: 520px;
+        }
+
+        p {
+            margin-bottom: 3em;
+        }
+
+        @media only screen and (max-width: 600px) {
+            body {
+                font-size: 80%;
+            }
+        }
+
+        .range-slider-container {
+            position: relative;
+            width: 220px;
+            margin-top: 10px;
+        } 
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 10px;
+            box-sizing: border-box;
+            border:  1px dashed rgba(111,111,111,0.3); /* set opacity to 0 to hide */
+            width: 100%;
+            background:  0;
+            cursor: pointer;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%; 
+            box-sizing: border-box;
+            box-shadow: -1px 1px 5px rgba(0,0,0,.4);
+            border: 3px solid #ddd;
+            background: #04AA6D; /*color*/
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-sizing: border-box;
+            box-shadow: -1px 1px 5px rgba(0,0,0,.4); 
+            border: 3px solid #ddd;
+            background: #04AA6D; /*color*/
+        }
+
+        .range-track {
+            width: 100%;
+            height: 4px;
+            background: #ccc; /*color*/
+            position: absolute;
+            pointer-events: none;
+            top: 10px;
+            left:  1px;
+            border-radius: 3px;
+
+        }
+
+        .track-highlight {
+            background: #04AA6D; /*color*/
+        }
+
+        #range_slider_1 {
+            z-index: 500;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+
+        .aside {
+            font-size: 80%;
+            margin-top: 4em;
+            line-height: 2.8;
+        }
+
+       
+
+
+    </style>
+
+
+</head>
+
+<body>
+
+    <h1>Cross Browser Range Slider</h1>
+    <p>
+        An ultra simple, easily customisable, cross browser range slider.
+        Includes widened interactive track area and track value highlight.
+    </p>
+
+    <label for="range_slider_1">
+        Value: <span id="range-slider-1-value">1</span> 
+    </label> 
+
+    <div class="range-slider-container">
+        <div class="range-track"></div>
+        <div id="range-slider-1-track-highlight" class="range-track track-highlight"></div>
+        <input type="range" min="0" max="100" value="100" class="slider" id="range_slider_1">
+    </div>
+
+    <p class="aside">
+        (dashed border indicates interactive track)
+    </p>
+
+<script>
+    
+
+    let range_slider_1 = document.getElementById("range_slider_1");
+    
+    update_slider()
+
+    range_slider_1.addEventListener("input", function (e) {
+        update_slider();
+    });
+
+
+    function update_slider() {
+
+        let slider_value = range_slider_1.value/100;
+        let slider_width = range_slider_1.offsetWidth;
+        let range_slider_1_value = document.getElementById("range-slider-1-value");
+        let range_slider_1_track_highlight = document.getElementById("range-slider-1-track-highlight");
+      
+        range_slider_1_track_highlight.style.width = slider_width * slider_value + "px";
+        range_slider_1_value.innerHTML = slider_value;
+
+    }
+
+
+    // Resize Window
+
+    window.addEventListener('resize', function(event) {
+        update_slider()
+    }, true);
+
+
+
+</script>
+</body>
+
+</html>
